@@ -1,45 +1,25 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <title>Laravel Test</title>
+@extends('layouts.app')
 
-        <link href="https://fonts.googleapis.com/css?family=Lato:100" rel="stylesheet" type="text/css">
+@section('content')
+<div class="container">
+    <div class="row">
+        <div class="col-md-10 col-md-offset-1">
+            <div class="panel panel-default">
 
-        <style>
-            html, body {
-                height: 100%;
-            }
+                    @if (Auth::guest())
+                        <div class="panel-heading">Welcome</div>
 
-            body {
-                margin: 0;
-                padding: 0;
-                width: 100%;
-                display: table;
-                font-weight: 100;
-                font-family: 'Lato';
-            }
+                    @else
 
-            .container {
-                text-align: center;
-                display: table-cell;
-                vertical-align: middle;
-            }
+                        <div class="panel-heading">Welcome, {{ Auth::user()->name }} </div>
+                        <div class="panel-heading"><a href="{{ url('/logout') }}"><i class="fa fa-btn fa-sign-out"></i>Logout</a></li></div>
+                    @endif
 
-            .content {
-                text-align: center;
-                display: inline-block;
-            }
-
-            .title {
-                font-size: 96px;
-            }
-        </style>
-    </head>
-    <body>
-        <div class="container">
-            <div class="content">
-                <div class="title">Laravel 5 Test</div>
+                <div class="panel-body">
+                    Your Application's Landing Page.
+                </div>
             </div>
         </div>
-    </body>
-</html>
+    </div>
+</div>
+@endsection
